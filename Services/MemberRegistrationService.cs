@@ -21,22 +21,20 @@ namespace ChurchApi.Services
         
          Task<int> LastMember(int ChurchID);
         Task<List<MemberRegistrationDto>> DependantList(string dependantID);
+
         Task<List<MemberRegistrationDto>> GetMembersList();
 
         Task<List<MemberRegistrationDto>> GetActiveMembers();
         Task<List<MemberRegistrationDto>> GetInActiveMembers();
         /*Task<List<MemberRegistrationDto>> GetConfirmedMembers(string approved);*/
         Task<List<MemberRegistrationDto>> GetUnConfirmedMembers();
-            
-        Task<List<MemberRegistrationDto>> GetDeceasedMembers(string deceased);
-        Task<List<MemberRegistrationDto>> GetAdultMembers(int age);
-        
-        Task<List<MemberRegistrationDto>> GetChildMembers(int age);
+
+        Task<List<MemberRegistrationDto>> GetDeceasedMembers();
+        Task<List<MemberRegistrationDto>> GetAdultMembers();
+
+        Task<List<MemberRegistrationDto>> GetChildMembers();
         Task<List<MemberRegistrationDto>> TransferedMembersOut();
         Task<List<MemberRegistrationDto>> TransferedMembersIn();
-        
-
-        
     }
 
 
@@ -95,6 +93,22 @@ namespace ChurchApi.Services
                 Relation = q?.Relation,
                 //Photo = q?.Photo
             }).ToList();
+        }
+
+        public async Task<List<MemberRegistrationDto>> getMemberList()
+        {
+
+            //if (data == null) throw new Exception("Record not found");
+            return await Task.FromResult(_context.Membership_Tbl.Select(q => new MemberRegistrationDto
+           {
+               MemberID = q.MemberID,
+               FirstName = q.FirstName,
+               MiddleName = q.MiddleName,
+               LastName = q.LastName,
+               DependantID = q.DependantID,
+               Relation = q.Relation,
+               //Photo = q?.Photo
+           }).ToList());
         }
 
         public override async Task<long> Save(MemberRegistrationDto record)
@@ -431,6 +445,7 @@ namespace ChurchApi.Services
             catch (Exception) { }
         }
 
+
         public async Task<List<MemberRegistrationDto>> GetMembersList()
         {
             var members = await _context.Membership_Tbl.ToListAsync();
@@ -438,21 +453,21 @@ namespace ChurchApi.Services
             return members.Select(q => new MemberRegistrationDto
             {
                 MemberID = q.MemberID,
-                FirstName =q?.FirstName,
+                FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
                 //Gender = q?.Gender,
                 //Age = q?.Age,
                 //DOB = q?.DOB,
                 //MaritalStatus = q?.MaritalStatus,
-                //Email = q?.Email,
+                Email = q?.Email,
                 //AcademicLevel = q?.AcademicLevel,
                 //ResidentialAddress = q?.ResidentialAddress,
                 //Landmark = q?.Landmark,
                 //Baptized = q?.Baptized,
                 //Employment = q?.Employment,
                 //Occupation = q?.Occupation,
-                //PhoneNumber = q?.PhoneNumber,
+                PhoneNumber = q?.PhoneNumber,
                 //ChurchGroups = q?.ChurchGroups,
                 //DigitalAddress = q?.DigitalAddress,
                 //BibleStudyGroup = q?.BibleStudyGroup,
@@ -497,7 +512,7 @@ namespace ChurchApi.Services
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
             }).ToList();
-  
+
         }
         public async Task<List<MemberRegistrationDto>> GetInActiveMembers()
         {
@@ -514,7 +529,7 @@ namespace ChurchApi.Services
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
             }).ToList();
-  
+
         }
 
         public async Task<List<MemberRegistrationDto>> GetUnConfirmedMembers()
@@ -532,13 +547,13 @@ namespace ChurchApi.Services
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
             }).ToList();
-  
+
         }
-        
-        public async Task<List<MemberRegistrationDto>> GetDeceasedMembers(string approved)
+
+        public async Task<List<MemberRegistrationDto>> GetDeceasedMembers()
         {
             var members = await _context.Membership_Tbl
-                .Where(q => q.Deceased == approved).ToListAsync();
+                .Where(q => q.Deceased == "Yes").ToListAsync();
             // return _mapper.Map<List<MemberRegistration>,List<GetMembersListDto>>(members);
 
             return (List<MemberRegistrationDto>)members.Select(q => new MemberRegistrationDto
@@ -550,15 +565,15 @@ namespace ChurchApi.Services
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
             }).ToList();
-  
+
         }
-        
-        
-        
-        public async Task<List<MemberRegistrationDto>> GetAdultMembers(int age)
+
+
+
+        public async Task<List<MemberRegistrationDto>> GetAdultMembers()
         {
             var members = await _context.Membership_Tbl
-                .Where(q => q.Age >= age).ToListAsync();
+                .Where(q => q.Age >= 18).ToListAsync();
             // return _mapper.Map<List<MemberRegistration>,List<GetMembersListDto>>(members);
 
             return (List<MemberRegistrationDto>)members.Select(q => new MemberRegistrationDto
@@ -570,14 +585,14 @@ namespace ChurchApi.Services
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
             }).ToList();
-  
+
         }
-        
-        public async Task<List<MemberRegistrationDto>> GetChildMembers(int age)
+
+        public async Task<List<MemberRegistrationDto>> GetChildMembers()
         {
             var members = await _context.Membership_Tbl
-                 //  13 Years and below  
-                .Where(q => q.Age <= age).ToListAsync();
+                //  13 Years and below  
+                .Where(q => q.Age <= 13).ToListAsync();
             // return _mapper.Map<List<MemberRegistration>,List<GetMembersListDto>>(members);
 
             return (List<MemberRegistrationDto>)members.Select(q => new MemberRegistrationDto
@@ -589,7 +604,7 @@ namespace ChurchApi.Services
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
             }).ToList();
-  
+
         }
 
         public async Task<List<MemberRegistrationDto>> TransferedMembersOut()
@@ -607,9 +622,9 @@ namespace ChurchApi.Services
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
             }).ToList();
-  
+
         }
-        
+
         public async Task<List<MemberRegistrationDto>> TransferedMembersIn()
         {
             var members = await _context.Membership_Tbl
@@ -625,7 +640,8 @@ namespace ChurchApi.Services
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
             }).ToList();
-  
+
         }
+
     }
 }

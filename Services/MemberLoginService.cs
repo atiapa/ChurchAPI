@@ -15,10 +15,11 @@ namespace ChurchApi.Services
     {
         Task<MemberLoginDto> Login(string username,string password);
         Task<MemberLoginDto> FindAsync(int memberId);
-        
         Task<bool> RecoverPassword(string email);
     }
     public class MemberLoginService : BaseService<MemberLoginDto, MemberLogin>, IMemberLoginService
+
+
     {
         public MemberLoginService(AppDbContext context, IMapper mapper) : base(context, mapper)
         {

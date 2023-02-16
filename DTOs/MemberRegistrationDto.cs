@@ -19,14 +19,13 @@ namespace ChurchApi.DTOs
         [FromQuery]
         public string FirstName { get; set; }
     }
-
-    public class GetMembersListDto 
+      
+    public class GetMembersListDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MemberID { get; set; }
     }
 
-   
 
 }

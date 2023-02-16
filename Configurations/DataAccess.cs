@@ -40,6 +40,7 @@ namespace ChurchApi.Configurations
             services.AddScoped<IChurchesService, ChurchesService>();
             services.AddScoped<IChurchServiceService, ChurchServiceService>();
             services.AddScoped<ITitlesService, TitlesService>();
+            services.AddScoped<IAdminUserService, AdminUserService>();
 
             return services;
         }
@@ -64,6 +65,7 @@ namespace ChurchApi.Configurations
                 CreateMap<Churches, ChurchesDto>().ReverseMap();
                 CreateMap <ChurchService, ChurchServiceDto > ().ReverseMap();
                 CreateMap <TitlesService, TitlesDto > ().ReverseMap();
+                CreateMap <AdminUserService, AdminUserDto > ().ReverseMap();
 
 
 

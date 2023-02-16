@@ -112,16 +112,15 @@ namespace ChurchApi.Controllers
                 return BadRequest(ExceptionHelper.ProcessException(ex));
             }
         }
-        
 
-   [HttpGet, Route("DependantList")]
+        [HttpGet, Route("DependantList")]
         public async Task<ActionResult> DependantList([FromQuery] string dependant)
         {
             try
             {
                 var data = await Service.DependantList(dependant);
                 //if (data == null) return NotFound();
-                return Ok(data);
+                return Ok(data);  
             }
             catch (Exception ex)
             {
@@ -129,164 +128,169 @@ namespace ChurchApi.Controllers
             }
         }
 
-        [HttpGet, Route("GetMembersList")]
-        public async Task<ActionResult> GetMembersList()
-        {
-            try
-            {
-                var data = await Service.GetMembersList();
-                //if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
-        }
 
-        
-        [HttpGet, Route("GetActiveMembers")]
-        public async Task<ActionResult> GetActiveMembers()
-        {
-            try    
-            {
-                var data = await Service.GetActiveMembers();
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
-        }
-        
-        
-        
-        [HttpGet, Route("GetInActiveMembers")]
-        public async Task<ActionResult> GetInActiveMembers()
-        {
-            try    
-            {
-                var data = await Service.GetInActiveMembers();
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
-        }
+       
 
-        
-        /*[HttpGet, Route("GetConfirmedMembers")]
-        public async Task<ActionResult> GetConfirmedMembers([FromQuery] string approved)
+
+    [HttpGet, Route("GetMembersList")]
+    public async Task<ActionResult> GetMembersList()
+    {
+        try
         {
-            try    
-            {
-                var data = await Service.GetConfirmedMembers(approved);
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
-        }*/
-        
-        [HttpGet, Route("GetUnConfirmedMembers")]
-        public async Task<ActionResult> GetUnConfirmedMembers()
-        {
-            try    
-            {
-                var data = await Service.GetUnConfirmedMembers();
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
+            var data = await Service.GetMembersList();
+            //if (data == null) return NotFound();
+            return Ok(data);
         }
-        
-        
-        
-        [HttpGet, Route("GetDeceasedMembers")]
-        public async Task<ActionResult> GetDeceasedMembers([FromQuery] string deceased)
+        catch (Exception ex)
         {
-            try    
-            {
-                var data = await Service.GetDeceasedMembers(deceased);
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
-        }
-        
-        
-        [HttpGet, Route("GetAdultMembers")]
-        public async Task<ActionResult> GetAdultMembers([FromQuery] int age)
-        {
-            try    
-            {
-                var data = await Service.GetAdultMembers(age);
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
-        }
-        
-        
-        
-        [HttpGet, Route("GetChildMembers")]
-        public async Task<ActionResult> GetChildMembers([FromQuery] int age)
-        {
-            try    
-            {
-                var data = await Service.GetChildMembers(age);
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
-        }
-        
-        
-        [HttpGet, Route("TransferedMembersOut")]
-        public async Task<ActionResult> TransferedMembersOut()
-        {
-            try    
-            {
-                var data = await Service.TransferedMembersOut();
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
-        }
-        
-        [HttpGet, Route("TransferedMembersIn")]
-        public async Task<ActionResult> TransferedMembersIn()
-        {
-            try    
-            {
-                var data = await Service.TransferedMembersIn();
-                if (data == null) return NotFound();
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ExceptionHelper.ProcessException(ex));
-            }
+            return BadRequest(ExceptionHelper.ProcessException(ex));
         }
     }
+
+
+    [HttpGet, Route("GetActiveMembers")]
+    public async Task<ActionResult> GetActiveMembers()
+    {
+        try
+        {
+            var data = await Service.GetActiveMembers();
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }
+
+
+
+    [HttpGet, Route("GetInActiveMembers")]
+    public async Task<ActionResult> GetInActiveMembers()
+    {
+        try
+        {
+            var data = await Service.GetInActiveMembers();
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }
+
+
+    /*[HttpGet, Route("GetConfirmedMembers")]
+    public async Task<ActionResult> GetConfirmedMembers([FromQuery] string approved)
+    {
+        try    
+        {
+            var data = await Service.GetConfirmedMembers(approved);
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }*/
+
+    [HttpGet, Route("GetUnConfirmedMembers")]
+    public async Task<ActionResult> GetUnConfirmedMembers()
+    {
+        try
+        {
+            var data = await Service.GetUnConfirmedMembers();
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }
+
+
+
+    [HttpGet, Route("GetDeceasedMembers")]
+    public async Task<ActionResult> GetDeceasedMembers()
+    {
+        try
+        {
+            var data = await Service.GetDeceasedMembers();
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }
+
+
+    [HttpGet, Route("GetAdultMembers")]
+    public async Task<ActionResult> GetAdultMembers()
+    {
+        try
+        {
+            var data = await Service.GetAdultMembers();
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }
+
+
+
+    [HttpGet, Route("GetChildMembers")]
+    public async Task<ActionResult> GetChildMembers()
+    {
+        try
+        {
+            var data = await Service.GetChildMembers();
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }
+
+
+    [HttpGet, Route("TransferedMembersOut")]
+    public async Task<ActionResult> TransferedMembersOut()
+    {
+        try
+        {
+            var data = await Service.TransferedMembersOut();
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }
+
+    [HttpGet, Route("TransferedMembersIn")]
+    public async Task<ActionResult> TransferedMembersIn()
+    {
+        try
+        {
+            var data = await Service.TransferedMembersIn();
+            if (data == null) return NotFound();
+            return Ok(data);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ExceptionHelper.ProcessException(ex));
+        }
+    }
+}
+
 }

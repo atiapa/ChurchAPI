@@ -23,7 +23,7 @@ namespace ChurchApi.Data
         public DbSet<Churches> churchDetail_tbl { get; set; }
         public DbSet<ChurchService> Services_Tbl { get; set; }
          public DbSet<Titles> Titles_Tbl { get; set; }
-        public DbSet<AdminUser> User { get; set; }
+        public DbSet<AdminUser> User_Tbl { get; set; }
         //public DbSet<Document> Documents { get; set; }
         //public DbSet<Bank> Banks { get; set; }
         //public DbSet<Stat> Stats { get; set; }

@@ -13,6 +13,8 @@ namespace ChurchApi.Services
         Task<long> Save(T record);
         Task<long> Update(T record);
         Task<bool> Delete(long id);
+
+
     }
 
 }

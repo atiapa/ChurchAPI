@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/codejack/.dotnet/store/|arch|/|tfm|",
-      "/home/codejack/.nuget/packages"
+      "C:\\Users\\bartill1G\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\bartill1G\\.nuget\\packages"
     ]
   }
 }

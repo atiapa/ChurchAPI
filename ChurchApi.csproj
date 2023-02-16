@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>f6440da1-0981-4548-838f-2c0b184d53f5</UserSecretsId>
     <Product>ChurchApi</Product>
     <PackageId>ChurchApi</PackageId>
@@ -47,24 +47,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Remove="Portal.Tests\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="Portal.Tests\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Portal.Tests\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Portal.Tests\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Portal.Tests\obj\Portal.Tests.csproj.nuget.dgspec.json" />
-    <_ContentIncludedByDefault Remove="Portal.Tests\obj\project.assets.json" />
   </ItemGroup>
 
 </Project>
