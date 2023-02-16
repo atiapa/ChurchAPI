@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e1c60687-857f-4ee3-b481-c1a1857b82d5": {
+      "ProjectGuid": "e1c60687-857f-4ee3-b481-c1a1857b82d5",
+      "DisplayName": "PortalApi",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "37a9ec89-3d38-4ccd-98e7-6f9e1af00de5": {
+      "ProjectGuid": "37a9ec89-3d38-4ccd-98e7-6f9e1af00de5",
+      "DisplayName": "PortalApi",
+      "ColorIndex": 1
+    },
+    "04d957bb-09bb-48fc-9291-6e98964a57dd": {
+      "ProjectGuid": "04d957bb-09bb-48fc-9291-6e98964a57dd",
+      "DisplayName": "Portal.Tests",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

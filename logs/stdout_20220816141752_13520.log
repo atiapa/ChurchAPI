@@ -1,0 +1,48 @@
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\bartill1G\Desktop\church-api\ChurchApi
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'ChurchApi.Data.AppDbContext'.
+      System.InvalidCastException: Unable to cast object of type 'System.DateTime' to type 'System.String'.
+         at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+         at Microsoft.Data.SqlClient.SqlDataReader.GetString(Int32 i)
+         at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidCastException: Unable to cast object of type 'System.DateTime' to type 'System.String'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at Microsoft.Data.SqlClient.SqlDataReader.GetString(Int32 i)
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'ChurchApi.Data.AppDbContext'.
+      System.InvalidCastException: Unable to cast object of type 'System.DateTime' to type 'System.String'.
+         at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+         at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidCastException: Unable to cast object of type 'System.DateTime' to type 'System.String'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'ChurchApi.Data.AppDbContext'.
+      System.InvalidCastException: Unable to cast object of type 'System.DateTime' to type 'System.String'.
+         at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+         at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidCastException: Unable to cast object of type 'System.DateTime' to type 'System.String'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+fail: Microsoft.EntityFrameworkCore.Query[10100]
+      An exception occurred while iterating over the results of a query for context type 'ChurchApi.Data.AppDbContext'.
+      System.InvalidCastException: Unable to cast object of type 'System.String' to type 'System.DateTime'.
+         at Microsoft.Data.SqlClient.SqlBuffer.get_DateTime()
+         at Microsoft.Data.SqlClient.SqlDataReader.GetDateTime(Int32 i)
+         at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidCastException: Unable to cast object of type '

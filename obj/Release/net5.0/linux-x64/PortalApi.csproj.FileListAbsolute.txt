@@ -1,0 +1,7 @@
+C:\Projects\portal\PortalApi\PortalApi\obj\Release\net5.0\linux-x64\PortalApi.csproj.AssemblyReference.cache
+C:\Projects\portal\PortalApi\PortalApi\obj\Release\net5.0\linux-x64\PortalApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\portal\PortalApi\PortalApi\obj\Release\net5.0\linux-x64\PortalApi.AssemblyInfoInputs.cache
+C:\Projects\portal\PortalApi\PortalApi\obj\Release\net5.0\linux-x64\PortalApi.AssemblyInfo.cs
+C:\Projects\portal\PortalApi\PortalApi\obj\Release\net5.0\linux-x64\PortalApi.csproj.CoreCompileInputs.cache
+C:\Projects\portal\PortalApi\PortalApi\obj\Release\net5.0\linux-x64\PortalApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Projects\portal\PortalApi\PortalApi\obj\Release\net5.0\linux-x64\PortalApi.MvcApplicationPartsAssemblyInfo.cache
