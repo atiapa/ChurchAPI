@@ -47,6 +47,25 @@ namespace ChurchApi.Controllers
             }
         }
 
+        [HttpDelete, Route("DeleteMember")]
+        public async Task<ActionResult> DeleteMember(int MemberID)
+        {
+            try
+            {
+                var data = await Service.Delete(MemberID);
+                if (data)
+                {
+                    return Ok();
+                }
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ExceptionHelper.ProcessException(ex));
+            }
+        }
+
+        
 
 
         [HttpGet, Route("LastMemberID")]

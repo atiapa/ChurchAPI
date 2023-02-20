@@ -40,20 +40,20 @@ namespace ChurchApi.Controllers
             }
         }
 
-        //[HttpGet, Route("recoverpassword")]
-        //public async Task<ActionResult> GetAdminUserId(string email)
-        //{
-        //    try
-        //    {
-        //        var data = await Service.AdminUserRecoverPassword(email);
-        //        if (data == null) return NotFound();
-        //        return Ok(data);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ExceptionHelper.ProcessException(ex));
-        //    }
-        //}
+        [HttpGet, Route("GetAdminMembersList")]
+        public async Task<ActionResult> GetAdminMembersList()
+        {
+            try
+            {
+                var data = await Service.GetAdminMembersList();
+                //if (data == null) return NotFound();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ExceptionHelper.ProcessException(ex));
+            }
+        }
     }   
     }
 

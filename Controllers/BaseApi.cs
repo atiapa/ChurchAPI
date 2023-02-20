@@ -23,7 +23,7 @@ namespace ChurchApi.Controllers
         //}
 
         [HttpGet,Route("dontusethisfind")]
-        public virtual async Task<ActionResult<TDto>> GetById(long id)
+        public virtual async Task<ActionResult<TDto>> GetById(int id)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace ChurchApi.Controllers
         }
 
         [Route("{id}"), HttpDelete]
-        public virtual async Task<ActionResult> Delete(long id)
+        public virtual async Task<ActionResult> Delete(int id)
         {
             try { return Ok(await Service.Delete(id)); }
             catch (Exception ex) { return BadRequest(ExceptionHelper.ProcessException(ex)); }

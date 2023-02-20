@@ -35,6 +35,9 @@ namespace ChurchApi.Services
         Task<List<MemberRegistrationDto>> GetChildMembers();
         Task<List<MemberRegistrationDto>> TransferedMembersOut();
         Task<List<MemberRegistrationDto>> TransferedMembersIn();
+        
+       // Task DeleteMember(int memberID);
+        Task DeleteMember(int memberID);
     }
 
 
@@ -107,6 +110,8 @@ namespace ChurchApi.Services
                LastName = q.LastName,
                DependantID = q.DependantID,
                Relation = q.Relation,
+               Gender = q.Gender,
+               
                //Photo = q?.Photo
            }).ToList());
         }
@@ -141,6 +146,7 @@ namespace ChurchApi.Services
             }
         }
 
+        
         public async Task<MemberRegistrationDto> Find(int memberID)
         {
             var data = await _context.Membership_Tbl.Where(q => q.MemberID == memberID).FirstOrDefaultAsync();
@@ -238,6 +244,28 @@ namespace ChurchApi.Services
             //    Photo=data.Photo
             //};
         }
+    
+        
+        public async Task DeleteMember(int memberID)
+        {
+            var theUser = await _context.Membership_Tbl.Where(q => q.MemberID == memberID).FirstOrDefaultAsync();
+            if (theUser == null) throw new Exception("Record not found");
+            _context.Membership_Tbl.Remove(theUser);
+            await _context.SaveChangesAsync();
+            //return false;
+        }
+        
+         /*public async Task<MemberRegistrationDto> DeleteMember(int memberID)
+        {
+            var data = await _context.Membership_Tbl
+                .Where(q => q.MemberID == memberID).FirstOrDefaultAsync();
+            return (List<MemberRegistrationDto>)data.Sele(q => new MemberRegistrationDto
+            {
+                
+            }
+
+          
+        }*/
 
         public async Task<int> LastMember(int churchID)
         {
@@ -456,24 +484,25 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
-                //Gender = q?.Gender,
-                //Age = q?.Age,
-                //DOB = q?.DOB,
-                //MaritalStatus = q?.MaritalStatus,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
                 Email = q?.Email,
-                //AcademicLevel = q?.AcademicLevel,
-                //ResidentialAddress = q?.ResidentialAddress,
-                //Landmark = q?.Landmark,
-                //Baptized = q?.Baptized,
-                //Employment = q?.Employment,
-                //Occupation = q?.Occupation,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q?.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
                 PhoneNumber = q?.PhoneNumber,
-                //ChurchGroups = q?.ChurchGroups,
+                ChurchGroups = q?.ChurchGroups,
                 //DigitalAddress = q?.DigitalAddress,
-                //BibleStudyGroup = q?.BibleStudyGroup,
-                //Title = q?.Title,
-                //PositionInChurch = q?.PositionInChurch,
-                //ChurchID = q?.ChurchID,
+                BibleStudyGroup = q?.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
                 //PostalAddress = q?.PostalAddress,
                 //MemberStatus = q?.MemberStatus,
                 //EntryDate = q?.EntryDate,
@@ -484,7 +513,7 @@ namespace ChurchApi.Services
                 //Remarks = q?.Remarks,
                 //Inactive_Reason = q?.Inactive_Reason,
                 //HolySpiritBaptism = q?.HolySpiritBaptism,
-                //BaptizmaDate = q?.BaptizmaDate,
+                BaptizmaDate = q?.BaptizmaDate,
                 //Service = q?.Service,
                 //Communicant = q?.Communicant,
                 //Transfered = q?.Transfered,
@@ -496,7 +525,8 @@ namespace ChurchApi.Services
                 //Photo = q?.Photo
             }).ToList();
         }
-
+    
+        
         public async Task<List<MemberRegistrationDto>> GetActiveMembers()
         {
             var members = await _context.Membership_Tbl
@@ -509,8 +539,45 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
+                Email = q?.Email,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
+                PhoneNumber = q?.PhoneNumber,
+                ChurchGroups = q?.ChurchGroups,
+                //DigitalAddress = q?.DigitalAddress,
+                BibleStudyGroup = q.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
+                //PostalAddress = q?.PostalAddress,
+                //MemberStatus = q?.MemberStatus,
+                //EntryDate = q?.EntryDate,
+                //HomeCellGroup = q?.HomeCellGroup,
+                //Deceased = q?.Deceased,
+                //MarriageDate = q?.MarriageDate,
+                //Status = q?.Status,
+                //Remarks = q?.Remarks,
+                //Inactive_Reason = q?.Inactive_Reason,
+                //HolySpiritBaptism = q?.HolySpiritBaptism,
+                BaptizmaDate = q?.BaptizmaDate,
+                //Service = q?.Service,
+                //Communicant = q?.Communicant,
+                //Transfered = q?.Transfered,
+                //TransferedDate = q?.TransferedDate,
+                //TransferedToFrom = q?.TransferedToFrom,
+                //Officer = q?.Officer,
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
+                //Photo = q?.Photo
             }).ToList();
 
         }
@@ -526,8 +593,45 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
+                Email = q?.Email,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q?.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
+                PhoneNumber = q?.PhoneNumber,
+                ChurchGroups = q?.ChurchGroups,
+                //DigitalAddress = q?.DigitalAddress,
+                BibleStudyGroup = q?.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
+                //PostalAddress = q?.PostalAddress,
+                //MemberStatus = q?.MemberStatus,
+                //EntryDate = q?.EntryDate,
+                //HomeCellGroup = q?.HomeCellGroup,
+                //Deceased = q?.Deceased,
+                //MarriageDate = q?.MarriageDate,
+                //Status = q?.Status,
+                //Remarks = q?.Remarks,
+                //Inactive_Reason = q?.Inactive_Reason,
+                //HolySpiritBaptism = q?.HolySpiritBaptism,
+                BaptizmaDate = q?.BaptizmaDate,
+                //Service = q?.Service,
+                //Communicant = q?.Communicant,
+                //Transfered = q?.Transfered,
+                //TransferedDate = q?.TransferedDate,
+                //TransferedToFrom = q?.TransferedToFrom,
+                //Officer = q?.Officer,
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
+                //Photo = q?.Photo
             }).ToList();
 
         }
@@ -544,8 +648,45 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
+                Email = q?.Email,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q?.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
+                PhoneNumber = q?.PhoneNumber,
+                ChurchGroups = q?.ChurchGroups,
+                //DigitalAddress = q?.DigitalAddress,
+                BibleStudyGroup = q?.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
+                //PostalAddress = q?.PostalAddress,
+                //MemberStatus = q?.MemberStatus,
+                //EntryDate = q?.EntryDate,
+                //HomeCellGroup = q?.HomeCellGroup,
+                //Deceased = q?.Deceased,
+                //MarriageDate = q?.MarriageDate,
+                //Status = q?.Status,
+                //Remarks = q?.Remarks,
+                //Inactive_Reason = q?.Inactive_Reason,
+                //HolySpiritBaptism = q?.HolySpiritBaptism,
+                BaptizmaDate = q?.BaptizmaDate,
+                //Service = q?.Service,
+                //Communicant = q?.Communicant,
+                //Transfered = q?.Transfered,
+                //TransferedDate = q?.TransferedDate,
+                //TransferedToFrom = q?.TransferedToFrom,
+                //Officer = q?.Officer,
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
+                //Photo = q?.Photo
             }).ToList();
 
         }
@@ -562,8 +703,45 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
+                Email = q?.Email,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q?.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
+                PhoneNumber = q?.PhoneNumber,
+                ChurchGroups = q?.ChurchGroups,
+                //DigitalAddress = q?.DigitalAddress,
+                BibleStudyGroup = q?.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
+                //PostalAddress = q?.PostalAddress,
+                //MemberStatus = q?.MemberStatus,
+                //EntryDate = q?.EntryDate,
+                //HomeCellGroup = q?.HomeCellGroup,
+                //Deceased = q?.Deceased,
+                //MarriageDate = q?.MarriageDate,
+                //Status = q?.Status,
+                //Remarks = q?.Remarks,
+                //Inactive_Reason = q?.Inactive_Reason,
+                //HolySpiritBaptism = q?.HolySpiritBaptism,
+                BaptizmaDate = q?.BaptizmaDate,
+                //Service = q?.Service,
+                //Communicant = q?.Communicant,
+                //Transfered = q?.Transfered,
+                //TransferedDate = q?.TransferedDate,
+                //TransferedToFrom = q?.TransferedToFrom,
+                //Officer = q?.Officer,
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
+                //Photo = q?.Photo
             }).ToList();
 
         }
@@ -582,8 +760,45 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
+                Email = q?.Email,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q?.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
+                PhoneNumber = q?.PhoneNumber,
+                ChurchGroups = q?.ChurchGroups,
+                //DigitalAddress = q?.DigitalAddress,
+                BibleStudyGroup = q?.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
+                //PostalAddress = q?.PostalAddress,
+                //MemberStatus = q?.MemberStatus,
+                //EntryDate = q?.EntryDate,
+                //HomeCellGroup = q?.HomeCellGroup,
+                //Deceased = q?.Deceased,
+                //MarriageDate = q?.MarriageDate,
+                //Status = q?.Status,
+                //Remarks = q?.Remarks,
+                //Inactive_Reason = q?.Inactive_Reason,
+                //HolySpiritBaptism = q?.HolySpiritBaptism,
+                BaptizmaDate = q?.BaptizmaDate,
+                //Service = q?.Service,
+                //Communicant = q?.Communicant,
+                //Transfered = q?.Transfered,
+                //TransferedDate = q?.TransferedDate,
+                //TransferedToFrom = q?.TransferedToFrom,
+                //Officer = q?.Officer,
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
+                //Photo = q?.Photo
             }).ToList();
 
         }
@@ -601,8 +816,45 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
+                Email = q?.Email,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q?.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
+                PhoneNumber = q?.PhoneNumber,
+                ChurchGroups = q?.ChurchGroups,
+                //DigitalAddress = q?.DigitalAddress,
+                BibleStudyGroup = q?.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
+                //PostalAddress = q?.PostalAddress,
+                //MemberStatus = q?.MemberStatus,
+                //EntryDate = q?.EntryDate,
+                //HomeCellGroup = q?.HomeCellGroup,
+                //Deceased = q?.Deceased,
+                //MarriageDate = q?.MarriageDate,
+                //Status = q?.Status,
+                //Remarks = q?.Remarks,
+                //Inactive_Reason = q?.Inactive_Reason,
+                //HolySpiritBaptism = q?.HolySpiritBaptism,
+                BaptizmaDate = q?.BaptizmaDate,
+                //Service = q?.Service,
+                //Communicant = q?.Communicant,
+                //Transfered = q?.Transfered,
+                //TransferedDate = q?.TransferedDate,
+                //TransferedToFrom = q?.TransferedToFrom,
+                //Officer = q?.Officer,
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
+                //Photo = q?.Photo
             }).ToList();
 
         }
@@ -619,8 +871,45 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
+                Email = q?.Email,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q?.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
+                PhoneNumber = q?.PhoneNumber,
+                ChurchGroups = q?.ChurchGroups,
+                //DigitalAddress = q?.DigitalAddress,
+                BibleStudyGroup = q?.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
+                //PostalAddress = q?.PostalAddress,
+                //MemberStatus = q?.MemberStatus,
+                //EntryDate = q?.EntryDate,
+                //HomeCellGroup = q?.HomeCellGroup,
+                //Deceased = q?.Deceased,
+                //MarriageDate = q?.MarriageDate,
+                //Status = q?.Status,
+                //Remarks = q?.Remarks,
+                //Inactive_Reason = q?.Inactive_Reason,
+                //HolySpiritBaptism = q?.HolySpiritBaptism,
+                BaptizmaDate = q?.BaptizmaDate,
+                //Service = q?.Service,
+                //Communicant = q?.Communicant,
+                //Transfered = q?.Transfered,
+                //TransferedDate = q?.TransferedDate,
+                //TransferedToFrom = q?.TransferedToFrom,
+                //Officer = q?.Officer,
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
+                //Photo = q?.Photo
             }).ToList();
 
         }
@@ -637,8 +926,45 @@ namespace ChurchApi.Services
                 FirstName = q?.FirstName,
                 MiddleName = q?.MiddleName,
                 LastName = q?.LastName,
+                Gender = q?.Gender,
+                Age = (int)q?.Age,
+                DOB = q?.DOB,
+                MaritalStatus = q?.MaritalStatus,
+                Email = q?.Email,
+                AcademicLevel = q?.AcademicLevel,
+                ResidentialAddress = q?.ResidentialAddress,
+                Landmark = q?.Landmark,
+                Baptized = q?.Baptized,
+                Employment = q?.Employment,
+                Occupation = q?.Occupation,
+                PhoneNumber = q?.PhoneNumber,
+                ChurchGroups = q?.ChurchGroups,
+                //DigitalAddress = q?.DigitalAddress,
+                BibleStudyGroup = q?.BibleStudyGroup,
+                Title = q?.Title,
+                PositionInChurch = q?.PositionInChurch,
+                ChurchID = (int)q?.ChurchID,
+                
+                //PostalAddress = q?.PostalAddress,
+                //MemberStatus = q?.MemberStatus,
+                //EntryDate = q?.EntryDate,
+                //HomeCellGroup = q?.HomeCellGroup,
+                //Deceased = q?.Deceased,
+                //MarriageDate = q?.MarriageDate,
+                //Status = q?.Status,
+                //Remarks = q?.Remarks,
+                //Inactive_Reason = q?.Inactive_Reason,
+                //HolySpiritBaptism = q?.HolySpiritBaptism,
+                BaptizmaDate = q?.BaptizmaDate,
+                //Service = q?.Service,
+                //Communicant = q?.Communicant,
+                //Transfered = q?.Transfered,
+                //TransferedDate = q?.TransferedDate,
+                //TransferedToFrom = q?.TransferedToFrom,
+                //Officer = q?.Officer,
                 DependantID = q?.DependantID,
                 Relation = q?.Relation,
+                //Photo = q?.Photo
             }).ToList();
 
         }

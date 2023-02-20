@@ -27,7 +27,7 @@ namespace ChurchApi.Services
             _dbSet = _context.Set<TModel>();
         }
 
-        public virtual async Task<T> FindAsync(long id)
+        public virtual async Task<T> FindAsync(int id)
         {
             var record = _dbSet.Find(id);
             return await Task.FromResult(record != null ? _mapper.Map<T>(record) : null);
@@ -58,7 +58,7 @@ namespace ChurchApi.Services
             return rec.Id;
         }
 
-        public virtual async Task<bool> Delete(long id)
+        public virtual async Task<bool> Delete(int id)
         {
             var record = await _dbSet.FindAsync(id);
             _dbSet.Remove(record);

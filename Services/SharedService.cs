@@ -8,11 +8,11 @@ namespace ChurchApi.Services
 {
     public interface IModelService<T>
     {
-        Task<T> FindAsync(long id);
+        Task<T> FindAsync(int id);
         Task<List<T>> FetchAllAsync();
         Task<long> Save(T record);
         Task<long> Update(T record);
-        Task<bool> Delete(long id);
+        Task<bool> Delete(int id);
 
 
     }

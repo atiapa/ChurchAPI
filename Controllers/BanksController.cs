@@ -20,6 +20,6 @@ namespace ChurchApi.Controllers
         public override Task<ActionResult> UpdateAsync(BankDto model) => base.UpdateAsync(model);
 
         [Authorize(Roles = Privileges.Setting)]
-        public override Task<ActionResult> Delete(long id) => base.Delete(id);
+        public override Task<ActionResult> Delete(int id) => base.Delete(id);
     }
 }
