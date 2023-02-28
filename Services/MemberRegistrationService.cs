@@ -252,7 +252,7 @@ namespace ChurchApi.Services
             if (theUser == null) throw new Exception("Record not found");
             _context.Membership_Tbl.Remove(theUser);
             await _context.SaveChangesAsync();
-            //return false;
+            //return ;
         }
         
          /*public async Task<MemberRegistrationDto> DeleteMember(int memberID)
@@ -349,7 +349,7 @@ namespace ChurchApi.Services
                 ChurchGroups = data.ChurchGroups,
                 DigitalAddress = data.DigitalAddress,
                 BibleStudyGroup = data.BibleStudyGroup,
-                Title = data.Title,
+                Title = data.Title ?? "",
                 PositionInChurch = data.PositionInChurch,
                 ChurchID = data.ChurchID,
                 PostalAddress = data.PostalAddress,
